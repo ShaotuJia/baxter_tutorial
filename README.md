@@ -1,5 +1,5 @@
 # ENPM 661 Project 4 Baxter Tutorial
-## Breif
+## Brief
 This project uses robot Baxter to pick and place a box on a table. During the movement of the baxter arm, it need to avoid an obstacle that placed on the same table. 
 ## Author
 - Shaotu Jia
