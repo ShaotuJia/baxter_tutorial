@@ -72,7 +72,7 @@ $ roslaunch baxter_moveit_config demo_baxter.launch right_electric_gripper:=true
 - Drag the arm to desired position and make a plan. Hint: the draged position should be a little offset to original position. Otherwise, the planner will fail to make a plan. 
 ![alt text](https://github.com/ShaotuJia/baxter_tutorial/blob/master/moveit_process/Plan.png)
 - Execute the plan
-![alt text](https://github.com/ShaotuJia/baxter_tutorial/blob/master/moveit_process/end.png)
+![alt text](https://github.com/ShaotuJia/baxter_tutorial/blob/master/moveit_process/finish.png)
 - Use ROS tf to find the current position of gripper
 ```
 $ rosrun tf tf_echo /world /left_gripper
