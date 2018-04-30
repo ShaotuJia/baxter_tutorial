@@ -45,4 +45,39 @@ This package baxter_tutorial is based on baxter_sim_examples/ik_pick_and_place_d
 - call move_arm function to move the left arm following the trajectory. (line 335 ~ 340)
 - remove the while loop. So this script only pick and place once. (line 349 ~ 358)
 
-The obstacle is based on the baxter_pillar. Since the the defalut obstacle in baxter_pillar is too large to avoid, it is changed to a small box on the table (baxter_box).  
+The obstacle is based on the baxter_pillar. Since the the defalut obstacle in baxter_pillar is too large to avoid, it is changed to a small box on the table (baxter_box). 
+
+## MoveIt! Path Plan
+To get the waypoints in the script, we need Moveit package to the trajectory without collision. 
+### How to Run MoveIt! for Baxter
+First, run baxter gazebo simulator
+```
+$ ./baxter.sh sim
+$ roslaunch baxter_gazebo baxter_world.launch
+```
+And then, if you want to use the model and start position in ik_pick_and_place_demo.py, you can comment out line 330 ~ 345 and run it.
+Next, run baxter joint controller
+```
+$ ./baxter.sh sim
+$ rosrun baxter_interface joint_trajectory_action_server.py
+```
+Finally, start MoveIt! RVIZ
+```
+$ ./baxter.sh sim
+$ roslaunch baxter_moveit_config demo_baxter.launch right_electric_gripper:=true left_electric_gripper:=true
+```
+### How to Use MoveIt
+- import scenes/baxter_box.scene to RVIZ
+![alt text](https://github.com/ShaotuJia/baxter_tutorial/blob/master/moveit_process/start.png)
+- Drag the arm to desired position and make a plan. Hint: the draged position should be a little offset to original position. Otherwise, the planner will fail to make a plan. 
+![alt text](https://github.com/ShaotuJia/baxter_tutorial/blob/master/moveit_process/Plan.png)
+- Execute the plan
+![alt text](https://github.com/ShaotuJia/baxter_tutorial/blob/master/moveit_process/end.png)
+- Use ROS tf to find the current position of gripper
+```
+$ rosrun tf tf_echo /world /left_gripper
+```
+![alt text](https://github.com/ShaotuJia/baxter_tutorial/blob/master/moveit_process/tf_echo.png)
+
+
+
